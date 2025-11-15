@@ -151,7 +151,7 @@ hasil-scan/
 
 ---
 
-### ⚠️ Catuan Penggunaan  
+### ⚠️ Catatan Penggunaan  
 - Pastikan setiap URL mengandung **teks persis `FUZZ`** (case-sensitive).  
 - Folder `target/` otomatis diabaikan (hasil build Rust).  
 - Untuk push ke GitHub, gunakan **Personal Access Token** atau **SSH key** (password biasa tidak lagi diterima).  
