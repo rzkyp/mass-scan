@@ -1,29 +1,29 @@
 🦀 **mass-scan**  
-*Blazing-fast mass XSS · SQLi · Nuclei scanner written in Rust*
+*Pemindai massal XSS · SQLi · Nuclei super-cepat berbasis Rust*
 
 ---
 
-### 📋 Deskripsi
+### 📋 Deskripsi  
 **mass-scan** adalah CLI berkecepatan tinggi yang menjalankan **tiga mesin scanner sekaligus**:  
-1. **XSS** via [*dalfox*](https://github.com/hahwul/dalfox)  
-2. **SQL-injection** via [*sqlmap*](https://github.com/sqlmapproject/sqlmap)  
-3. **Generic vulnerabilities** via [*nuclei*](https://github.com/projectdiscovery/nuclei)
+1. **XSS** via *dalfox*  
+2. **SQL-injection** via *sqlmap*  
+3. **Vulnerabilitas umum** via *nuclei*
 
 Cukup sisipkan token **`FUZZ`** di URL → alat otomatis mengganti token dengan payload yang sesuai, lalu men-scan secara paralel.
 
 ---
 
-### 🎯 Manfaat
+### 🎯 Manfaat  
 | Manfaat | Penjelasan |
 |---------|------------|
-| ** hemat waktu ** | satu perintah → tiga laporan sekaligus |
+| **hemat waktu** | satu perintah → tiga laporan sekaligus |
 | **presisi tinggi** | POC diverifikasi langsung oleh *dalfox* & *sqlmap* |
 | **skalabel** | bisa memproses ribuan URL sekaligus via file atau stdin |
 | **aman & cepat** | ditulis dalam Rust + paralel Rayon |
 
 ---
 
-### 🔧 Fitur Detail
+### 🔧 Fitur Detail  
 | Fitur | Detail Teknis |
 |-------|---------------|
 | **Rust + Rayon** | thread-pool otomatis, zero-cost abstraction, aman memori |
@@ -36,7 +36,7 @@ Cukup sisipkan token **`FUZZ`** di URL → alat otomatis mengganti token dengan 
 
 ---
 
-### 🛠️ Cara Pasang (Kali / Ubuntu / Debian)
+### 🛠️ Cara Pasang (Kali / Ubuntu / Debian)  
 1. **Instal scanner eksternal**
    ```bash
    # dalfox
@@ -67,7 +67,7 @@ Cukup sisipkan token **`FUZZ`** di URL → alat otomatis mengganti token dengan 
 
 ---
 
-### 🚀 Cara Pakai
+### 🚀 Cara Pakai  
 | Skenario | Perintah |
 |----------|----------|
 | **scan semua (stdin)** | `cat urls.txt | mass-scan` |
@@ -80,7 +80,7 @@ Cukup sisipkan token **`FUZZ`** di URL → alat otomatis mengganti token dengan 
 
 ---
 
-### 📊 Contoh Hasil
+### 📊 Contoh Hasil  
 **Perintah:**
 ```bash
 echo 'https://buggy.site/search?q=FUZZ' | mass-scan
@@ -88,38 +88,83 @@ echo 'https://buggy.site/search?q=FUZZ' | mass-scan
 
 **Terminal (live):**
 ```
-[+] XSS selesai → hasil-scan/xss-findings.txt
-[+] SQLi selesai → folder hasil-scan
-[+] Nuclei selesai → hasil-scan/nuclei-findings.txt
+[+] XSS selesai → hasil-scan/hasil-xss.txt
+[+] SQLi selesai → hasil-scan/hasil-sqli.txt
+[+] Nuclei selesai → hasil-scan/hasil-nuclei.txt
 [+] Selesai! Cek hasil-scan
 ```
 
 **Isi folder:**
 ```
 hasil-scan/
-├── xss-urls.txt           → URL sudah di-inject payload
-├── xss-findings.txt       → POC XSS terverifikasi
-├── sqli-urls.txt          → URL dengan wildcard *
-├── sqli-findings/         → laporan JSON & log SQLMap
-└── nuclei-findings.txt    → template yang match
+├── hasil-xss.txt          → POC XSS, curl, CVE
+├── hasil-sqli.txt         → DBMS, DB name, user, password, tabel, CVE
+├── hasil-nuclei.txt       → template-id, severity, CVE, description
+└── *.json (raw)           → versi JSON untuk otomasi
+```
+
+**Cuplikan hasil-xss.txt:**
+```
+🔍 Finding #1
+   URL      : https://demo.testfire.net/search?q=<script>alert(1)</script>
+   Payload  : <script>alert(1)</script>
+   Evidence : <script>alert(1)</script>
+   Severity : high
+   Extra    : {
+     "dalfox_poc": "<script>alert(1)</script>",
+     "curl_poc": "curl -X GET 'https://demo.testfire.net?q=%3Cscript%3E...'",
+     "cve": []
+   }
+```
+
+**Cuplikan hasil-sqli.txt:**
+```
+🔍 Finding #1
+   URL      : https://demo.testfire.net/search?q=1' OR 1=1-- -
+   Payload  : 1' OR 1=1-- -
+   Evidence : MySQL error 1064: syntax
+   Severity : high
+   Extra    : {
+     "dbms": "MySQL",
+     "db_name": "acme_portal",
+     "user": "acme_user@localhost",
+     "password": "P@ssw0rd123",
+     "tables": ["users", "orders", "admin"],
+     "cve": ["CVE-2023-1234"]
+   }
+```
+
+**Cuplikan hasil-nuclei.txt:**
+```
+🔍 Finding #1
+   URL      : https://demo.testfire.net/search?q=test
+   Payload  : apache-log4j-rce
+   Evidence : log4j
+   Severity : critical
+   Extra    : {
+     "template_id": "apache-log4j-rce",
+     "name": "Apache Log4j RCE",
+     "description": "Apache Log4j <= 2.14.1 RCE vulnerability",
+     "cve": ["CVE-2021-44228"]
+   }
 ```
 
 ---
 
-### ⚠️ Catuan Penggunaan
-- Pastikan setiap URL mengandung **teks persis `FUZZ`** (case-sensitive).
-- Folder `target/` otomatis diabaikan (hasil build Rust).
-- Untuk push ke GitHub, gunakan **Personal Access Token** atau **SSH key** (password biasa tidak lagi diterima).
+### ⚠️ Catuan Penggunaan  
+- Pastikan setiap URL mengandung **teks persis `FUZZ`** (case-sensitive).  
+- Folder `target/` otomatis diabaikan (hasil build Rust).  
+- Untuk push ke GitHub, gunakan **Personal Access Token** atau **SSH key** (password biasa tidak lagi diterima).  
 
 ---
 
-### 🤝 Kontribusi
+### 🤝 Kontribusi  
 Pull-requests & issues dipersilakan.  
 Label `good-first-issue` tersedia untuk pemula Rust.
 
 ---
 
-### 📜 Credit & License
+### 📜 Credit & License  
 - **0xZer0r** – penulis kode Rust © 2025  
 - **hahwul** – Dalfox  
 - **projectdiscovery** – Nuclei  
