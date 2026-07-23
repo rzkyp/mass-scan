@@ -165,9 +165,9 @@ Label `good-first-issue` tersedia untuk pemula Rust.
 ---
 
 ### 📜 Credit & License  
-- **0xZer0r** – penulis kode Rust © 2025  
+- **Zero** – penulis kode Rust © 2025  
 - **hahwul** – Dalfox  
 - **projectdiscovery** – Nuclei  
 - **sqlmap project** – SQLMap  
 
-**License:** MIT © 2025 0xZer0r
+**License:** MIT © 2025 Zero
