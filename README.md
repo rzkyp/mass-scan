@@ -53,7 +53,7 @@ Cukup sisipkan token **`FUZZ`** di URL → alat otomatis mengganti token dengan 
 
 2. **Clone & build mass-scan**
    ```bash
-   git clone https://github.com/0xZer0r/mass-scan.git
+   git clone https://github.com/rzkyp/mass-scan.git
    cd mass-scan
    cargo build --release
    sudo cp target/release/mass-scan /usr/local/bin/
