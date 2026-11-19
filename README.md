@@ -1,14 +1,15 @@
-<p align="center">
-  <img src="assets/banner.png" alt="mass-scan" style="width:100%;max-height:260px;object-fit:cover"/>
-</p>
+<pre>
+                                                    
+                                                    
+ _ __ ___   __ _ ___ ___ ______ ___  ___ __ _ _ __  
+| &#x27;_ ` _ \ / _` / __/ __|______/ __|/ __/ _` | &#x27;_ \ 
+| | | | | | (_| \__ \__ \      \__ \ (_| (_| | | | |
+|_| |_| |_|\__,_|___/___/      |___/\___\__,_|_| |_|
+                                                    
+                                                    
+</pre>
 
-<p align="center">
-  <img src="assets/logo.png" alt="mass-scan logo" width="110"/>
-</p>
-
-<h1 align="center">mass-scan</h1>
-
-<p align="center">dalfox + sqlmap + nuclei, paralel</p>
+<p align="center">Rust · XSS · SQLi · Nuclei — paralel & agresif</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Rust-000000" alt=""/>
