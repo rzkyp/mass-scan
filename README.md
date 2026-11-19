@@ -1,17 +1,21 @@
 <p align="center">
-  <img src="assets/logo.png" alt="mass-scan" width="240"/>
+  <img src="assets/banner.png" alt="mass-scan" style="width:100%;max-height:260px;object-fit:cover"/>
+</p>
+
+<p align="center">
+  <img src="assets/logo.png" alt="mass-scan logo" width="110"/>
 </p>
 
 <h1 align="center">mass-scan</h1>
+
+<p align="center">dalfox + sqlmap + nuclei, paralel</p>
 
 <p align="center">
   <img src="https://img.shields.io/badge/Rust-000000" alt=""/>
   <img src="https://img.shields.io/badge/XSS-critical-f85149" alt=""/>
   <img src="https://img.shields.io/badge/SQLi-orange" alt=""/>
-  <img src="https://img.shields.io/badge/Nuclei-blueviolet" alt=""/>
+  <img src="https://img.shields.io/badge/MIT-2ea043" alt=""/>
 </p>
-
-<p align="center">CLI Rust super-cepat: XSS (dalfox) + SQLi (sqlmap) + Nuclei secara paralel.</p>
 
 ---
 
@@ -182,9 +186,9 @@ Label `good-first-issue` tersedia untuk pemula Rust.
 ---
 
 ### 📜 Credit & License  
-- **Zero** – penulis kode Rust © 2025  
+- **Zexo** – penulis kode Rust © 2025  
 - **hahwul** – Dalfox  
 - **projectdiscovery** – Nuclei  
 - **sqlmap project** – SQLMap  
 
-**License:** MIT © 2025 Zero
+**License:** MIT © 2025 Zexo
