@@ -188,7 +188,3 @@ Label `good-first-issue` tersedia untuk pemula Rust.
 - **sqlmap project** – SQLMap  
 
 **License:** MIT © 2025 Zero
-
----
-
-<p align="center"><sub>Made with a little help from <b>Hermes</b> · dev colab with hermes</sub></p>
