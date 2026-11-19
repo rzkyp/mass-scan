@@ -1,3 +1,20 @@
+<p align="center">
+  <img src="assets/logo.png" alt="mass-scan" width="240"/>
+</p>
+
+<h1 align="center">mass-scan</h1>
+
+<p align="center">
+  <img src="https://img.shields.io/badge/Rust-000000" alt=""/>
+  <img src="https://img.shields.io/badge/XSS-critical-f85149" alt=""/>
+  <img src="https://img.shields.io/badge/SQLi-orange" alt=""/>
+  <img src="https://img.shields.io/badge/Nuclei-blueviolet" alt=""/>
+</p>
+
+<p align="center">CLI Rust super-cepat: XSS (dalfox) + SQLi (sqlmap) + Nuclei secara paralel.</p>
+
+---
+
 🦀 **mass-scan**  
 *Pemindai massal XSS · SQLi · Nuclei super-cepat berbasis Rust*
 
@@ -171,3 +188,7 @@ Label `good-first-issue` tersedia untuk pemula Rust.
 - **sqlmap project** – SQLMap  
 
 **License:** MIT © 2025 Zero
+
+---
+
+<p align="center"><sub>Made with a little help from <b>Hermes</b> · dev colab with hermes</sub></p>
