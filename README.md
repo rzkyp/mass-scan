@@ -12,6 +12,9 @@
 <p align="center">Rust · XSS · SQLi · Nuclei — paralel & agresif</p>
 
 <p align="center">
+  <img src="docs/logo.png" alt="ZEXO — ZeroDev" width="110">
+</p>
+<p align="center">
   <img src="https://img.shields.io/badge/Rust-000000" alt=""/>
   <img src="https://img.shields.io/badge/XSS-critical-f85149" alt=""/>
   <img src="https://img.shields.io/badge/SQLi-orange" alt=""/>
